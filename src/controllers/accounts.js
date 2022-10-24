@@ -60,9 +60,6 @@ function ShowAccounts(req) {
         } else {
             console.log('user is not logged in')
         }
-        
-        
-
     });
 
 
