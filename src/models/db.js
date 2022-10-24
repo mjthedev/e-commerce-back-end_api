@@ -1,11 +1,35 @@
-const { Sequelize } = require('sequelize');
+// const { Sequelize } = require('sequelize');
+const {Pool} = require('pg');
 
 
 
-const sequelize = new Sequelize('e-commerce', 'postgres', 'postgres', {
+// const sequelize = new Sequelize('e-commerce', 'postgres', 'postgres', {
+//     host: 'localhost',
+//     dialect: 'postgres'
+// });
+
+
+// module.exports = sequelize;
+
+// const {Pool} = require('pg');
+
+
+const pool = new Pool({
+    user: 'postgres',
     host: 'localhost',
-    dialect: 'postgres'
+    database: 'ecommerce',
+    password: 'postgres',
+    port: 5432
 });
 
+module.exports = pool;
 
-module.exports = sequelize;
+// var mysql = require('mysql');
+// var connection = mysql.createConneciton({
+//     host: 'mysql', 
+//     user: 'root',
+//     password: 'secret',
+//     database: 'ecommerce'
+// })
+
+// module.export = connection;

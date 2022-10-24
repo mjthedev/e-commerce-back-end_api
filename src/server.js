@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const usersRoutes = require('./routes/UsersRoute')
+const accountRoutes = require('./routes/AccountRoute')
 require('dotenv').config()
 
 const PORT = process.env.PORT_NUMBER;
@@ -21,7 +21,7 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-
+app.use('/', accountRoutes);
 
 
 
