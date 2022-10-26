@@ -22,6 +22,11 @@ const pool = new Pool({
     port: 5432
 });
 
+// pool.query('SELECT * FROM accounts;', (err, res) => {
+//     console.log(err, res)
+//     pool.end()
+//   })
+
 module.exports = pool;
 
 // var mysql = require('mysql');
