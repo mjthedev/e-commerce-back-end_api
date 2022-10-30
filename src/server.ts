@@ -1,4 +1,4 @@
-const express = require('express');
+let express = require('express');
 const app = express();
 const accountRoutes = require('./routes/AccountRoute')
 require('dotenv').config()
@@ -26,5 +26,6 @@ app.use('/', accountRoutes);
 
 
 
-
 app.listen(PORT, console.log('app listening on port:', PORT));
+
+export {};

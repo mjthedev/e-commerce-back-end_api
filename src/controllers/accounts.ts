@@ -4,12 +4,12 @@ const saltRounds = 10;
 // const chalk = require('chalk');
 
 
-function ShowAccounts() {
-    pool.query('SELECT * FROM accounts;', (err, res) => {
-        let data = res.rows;
-        console.log(res.rows);
-    })
-}
+// function ShowAccounts() {
+//     pool.query('SELECT * FROM accounts;', (err, res) => {
+//         let data = res.rows;
+//         console.log(res.rows);
+//     })
+// }
 
 
 
@@ -18,19 +18,19 @@ function ShowAccounts() {
 // then we're parsing the JSON object so that we can access the data for destructuring
 // once destructured, we can now move on to using the variables from our req object within our function
 // we use the bcrypt library to hash our password coming in from the 
-function AddAccount(req) {
+function AddAccount(req: any) {
     const data = JSON.parse(JSON.stringify(req.body))
     // destructuring data object to store values into database once the password is hashed
     const { firstname, lastname, username, password, email } = data;
     console.log(password);
     // creating a hashing function 
     function hashedPassword() {
-        bycrypt.hash(password, saltRounds, function(err, hash) {
+        bycrypt.hash(password, saltRounds, function(err: string, hash: string) {
             let hashedData = hash;
 
-            const query = 'INSERT INTO accounts (first_name, last_name, username, password, email) VALUES ($1, $2, $3, $4, $5) RETURNING *';
-            const values = [firstname, lastname, username, hash, email];
-            pool.query(query, values, (err, res) => {
+            const query: string = 'INSERT INTO accounts (first_name, last_name, username, password, email) VALUES ($1, $2, $3, $4, $5) RETURNING *';
+            const values: [string, string, string, string, string] = [firstname, lastname, username, hash, email];
+            pool.query(query, values, (err: any, res: any) => {
                 if(err) {
                     console.log(err.stack)
                      } else console.log(res.rows)
@@ -49,16 +49,16 @@ function AddAccount(req) {
 
 
 
-function ShowAccounts(req) {
-    const loggedin = false;
-    const loggingUser = JSON.parse(JSON.stringify(req.body))
+function ShowAccounts(req: any) {
+    const loggedin: boolean = false;
+    const loggingUser: any = JSON.parse(JSON.stringify(req.body))
     
     // const loggingUser = JSON.parse(JSON.stringify(req));
     // console.log(loggingUser);
 
     const query = 'SELECT * FROM accounts;';
-    let data = [];
-    pool.query(query, (err, res) => {
+    let data: any = [];
+    pool.query(query, (err: any, res: any) => {
         if(err) {
             console.log(err.stack);
         } else {
@@ -69,9 +69,10 @@ function ShowAccounts(req) {
         }
         // console.log(data)
         
-    const newData = data.filter(user => { 
+    const newData = data.filter((user: any) => { 
+        
         // return user object
-        if(user.username === loggingUser.username) {
+        if(user['username'] === loggingUser.username) {
             return true;
         }
     });
@@ -81,12 +82,12 @@ function ShowAccounts(req) {
     // the user object from the database is in an array and we need to access the object returned from our filter method from above
     const user = newData[0];
             // we assign the outcome of the function below to determine whether the password provided is a match or not
-           let dbResult = bycrypt.compareSync(loggingUser.password, user.password);
+           let dbResult = bycrypt.compareSync(loggingUser.password, user['password']);
 
            console.log(dbResult);
 
             // check if user is loggedin depending on what boolean value the variable dbResult returns
-           function userLoggedIn(user) {
+           function userLoggedIn(user: any) {
             if(user) {
                 return console.log(`user officially logged in`);
             } else return console.log(`user not authenticated`);
@@ -113,3 +114,5 @@ module.exports = {
     ShowAccounts,
     AddAccount,
 };
+
+export{}
