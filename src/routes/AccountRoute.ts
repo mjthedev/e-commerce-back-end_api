@@ -11,7 +11,7 @@ const connection = require('../models/db');
 
 router.post('/addaccount', (req: any, res: any) => {
     AddAccount(req)
-    res.send('user added to database')
+    res.redirect(302, 'http://localhost:3000/login')
 })
 
 
@@ -19,6 +19,9 @@ router.post('/getuser', (req: any, res: any) => {
     ShowAccounts(req);
 })
 
+router.get('/login', (req: any, res: any) => {
+    
+})
 
 module.exports = router;
 
