@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const passport = require('passport');
+const logger = require('morgan');
 
 const initializePassport = require('./passport-config.ts');
 // initializePassport(passport);
@@ -20,6 +21,9 @@ app.use(cors());
 
 app.use(cookieParser());
 
+//   adding logger middleware
+
+app.use(logger('combined'))
 
 // Configuring body parser middleware
 app.use(bodyParser.urlencoded({extended: false}));
