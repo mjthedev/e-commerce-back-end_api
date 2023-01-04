@@ -7,6 +7,10 @@ const PORT = process.env.PORT_NUMBER;
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+const passport = require('passport');
+
+const initializePassport = require('./passport-config.ts');
+// initializePassport(passport);
 
 
 // adding cors middleware
@@ -22,7 +26,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.use('/', accountRoutes);
-
+//app.use('/', loginRoutes);
 
 
 

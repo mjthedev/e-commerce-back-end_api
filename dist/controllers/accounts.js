@@ -58,7 +58,7 @@ function ShowAccounts(req) {
             data = dbdata;
         }
         // console.log(data)
-        const newData = data.filter(user => {
+        const newData = data.filter((user) => {
             // return user object
             if (user['username'] === loggingUser.username) {
                 return true;
@@ -90,7 +90,13 @@ function ShowAccounts(req) {
     // const data = req.body;
     // const {username, password} = data;
 }
+// login functionality
+function LoginAccount(req) {
+    // check if the user info is part of the database.
+    // if everything checks out return a token or sessioncookie
+}
 module.exports = {
     ShowAccounts,
     AddAccount,
+    LoginAccount
 };

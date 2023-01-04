@@ -8,6 +8,9 @@ const PORT = process.env.PORT_NUMBER;
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+const passport = require('passport');
+const initializePassport = require('./passport-config.ts');
+// initializePassport(passport);
 // adding cors middleware
 app.use(cors());
 // adding cookie middleware
@@ -16,4 +19,5 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use('/', accountRoutes);
-app.listen(PORT, console.log('app listening on port:', PORT));
+//app.use('/', loginRoutes);
+app.listen(5000, console.log('app listening on port:', PORT));

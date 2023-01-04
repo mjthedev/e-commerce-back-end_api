@@ -8,9 +8,12 @@ const { AddAccount, ShowAccounts } = require('../controllers/accounts');
 const connection = require('../models/db');
 router.post('/addaccount', (req, res) => {
     AddAccount(req);
-    res.send('user added to database');
+    res.redirect(302, 'http://localhost:3000/login');
 });
 router.post('/getuser', (req, res) => {
     ShowAccounts(req);
+});
+router.get('/login', (req, res) => {
+    console.log('login route is working');
 });
 module.exports = router;

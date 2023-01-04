@@ -110,9 +110,23 @@ function ShowAccounts(req: any) {
 
 }
 
+
+// login functionality
+
+function LoginAccount(req:any) {
+	// check if the user info is part of the database.
+	// if everything checks out return a token or sessioncookie
+
+}
+
+
+
+
+
 module.exports = {
     ShowAccounts,
     AddAccount,
+    LoginAccount
 };
 
 export{}

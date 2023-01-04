@@ -20,8 +20,13 @@ router.post('/getuser', (req: any, res: any) => {
 })
 
 router.get('/login', (req: any, res: any) => {
-    
+	console.log('login route is working');    
 })
+
+router.get('/show', (req: any, res: any) => {
+    ShowAccounts();
+});
+
 
 module.exports = router;
 
