@@ -22,10 +22,11 @@ const pool = new Pool({
     port: 5432
 });
 
-// pool.query('SELECT * FROM accounts;', (err: any, res: any) => {
+//// pool.query('SELECT * FROM accounts;', (err: any, res: any) => {
 //     console.log(err, res)
 //     pool.end()
 //  })
+
 
 module.exports = pool;
 
